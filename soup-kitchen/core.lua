@@ -48,6 +48,12 @@ function Core:changeScene(scene)
   self.NewScene = self.Scenes[scene]
 end
 
+function Core:loadImage(scope, name)
+  local image = love.graphics.newImage(self.Settings.Graphics.Directory..scope.."/"..name)
+  assert(image)
+  return image
+end
+
 function Core:keyPressed(key)
   if self.Settings.Magic.QuickExit.Enabled and key == self.Settings.Magic.QuickExit.Key then
     os.exit(true)
