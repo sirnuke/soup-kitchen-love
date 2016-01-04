@@ -1,8 +1,12 @@
 -- Soup Kitchen
 -- Bryan DeGrendel (c) 2016
 
-Log = require "log"
 Inspect = require "library.inspect"
+Class = require "library.30log"
+
+require "library.strict"
+
+Log = require "log"
 
 local tag = "Main"
 
