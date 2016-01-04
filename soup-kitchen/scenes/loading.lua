@@ -14,14 +14,19 @@ function Loading:init(core)
       Background = "background.png"
     },
   }
-end
-
-function Loading:enter()
   self.Background = self:loadImage("Background")
 end
 
+function Loading:setReturnScene(nextScene)
+  self.NextScene = nextScene
+end
+
+function Loading:enter()
+  assert(self.NextScene)
+end
+
 function Loading:update(dt)
-  self.Core:changeScene("MainMenu")
+  self.Core:changeScene(self.NextScene)
 end
 
 function Loading:draw()
@@ -29,5 +34,5 @@ function Loading:draw()
 end
 
 function Loading:exit()
-  self.Background = nil
+  self.NextScene = nil
 end

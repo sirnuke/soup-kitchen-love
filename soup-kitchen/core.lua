@@ -19,6 +19,7 @@ function Core:init()
     MainMenu = MainMenu(self),
     InGame = InGame(self),
   }
+  self.Scenes.Loading:setReturnScene("MainMenu")
   self.ActiveScene = self.Scenes.Loading
   self.ActiveScene:enter()
   self.ActiveScene:draw()
@@ -40,6 +41,11 @@ function Core:update(dt)
   end
 
   self.ActiveScene:update(dt)
+end
+
+function Core:displayLoadingScene(returnScene)
+  self.Scenes.Loading:setReturnScene(returnScene)
+  self:changeScene("Loading")
 end
 
 function Core:changeScene(scene)
