@@ -5,6 +5,7 @@ require "settings"
 
 require "scenes.loading"
 require "scenes.mainmenu"
+require "scenes.ingame"
 
 local tag = "Core"
 
@@ -16,6 +17,7 @@ function Core:init()
   self.Scenes = {
     Loading = Loading(self),
     MainMenu = MainMenu(self),
+    InGame = InGame(self),
   }
   self.ActiveScene = self.Scenes.Loading
   self.ActiveScene:enter()
