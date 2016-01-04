@@ -6,4 +6,3 @@ require "scenes.scene"
 local tag = "MainMenu"
 
 MainMenu = Scene:extend("MainMenu")
-
