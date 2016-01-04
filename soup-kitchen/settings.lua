@@ -3,10 +3,7 @@
 
 local tag = "Settings"
 
-Settings = {}
+Settings = Class("Settings")
 
-function Settings.initialize()
-end
-
-function Settings.load(filename)
+function Settings:init()
 end
