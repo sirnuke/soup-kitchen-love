@@ -11,7 +11,6 @@ describe("Settings", function()
   require "soup-kitchen.settings"
 
   it("performs basic initialization", function()
-    --require "soup-kitchen.library.strict"
-    settings = Settings()
+    local settings = Settings()
   end)
 end)
