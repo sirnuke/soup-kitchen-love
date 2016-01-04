@@ -13,7 +13,10 @@ local function generate_defaults(root)
     },
   }
   root.Graphics = {
+    Directory = "images/",
     Clear = { 255, 255, 255, 0 },
+  }
+  root.Scenes = {
   }
 end
 
