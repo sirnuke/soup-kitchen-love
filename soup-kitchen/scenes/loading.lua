@@ -7,8 +7,17 @@ local tag = "Loading"
 
 Loading = Scene:extend("Loading")
 
+function Loading:init(core)
+  Loading.super:init(core)
+  self.Core.Settings.Scenes.Loading = {
+    Images = {
+      Background = "background.png"
+    },
+  }
+end
+
 function Loading:enter()
-  -- TODO: Load loading image
+  self.Background = self:loadImage("Background")
 end
 
 function Loading:update(dt)
@@ -16,9 +25,9 @@ function Loading:update(dt)
 end
 
 function Loading:draw()
-  -- TODO: Draw loading image
+  love.graphics.draw(self.Background)
 end
 
 function Loading:exit()
-  -- TODO: Destroy loading image?
+  self.Background = nil
 end
