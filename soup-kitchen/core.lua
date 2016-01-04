@@ -3,6 +3,7 @@
 
 require "settings"
 
+require "scenes.loading"
 require "scenes.mainmenu"
 
 local tag = "Core"
@@ -13,10 +14,12 @@ function Core:init()
   Log.info(tag, "Initializing")
   self.Settings = Settings()
   self.Scenes = {
-    MainMenu = MainMenu(self)
+    Loading = Loading(self),
+    MainMenu = MainMenu(self),
   }
-  self.ActiveScene = self.Scenes.MainMenu
+  self.ActiveScene = self.Scenes.Loading
   self.ActiveScene:enter()
+  self.ActiveScene:draw()
   self.NewScene = nil
 end
 
