@@ -6,7 +6,7 @@ local tag = "Scene"
 Scene = Class("Scene")
 
 function Scene:init(core)
-  self.core = core
+  self.Core = core
   self.OverrideWarn = {
     Enter = false,
     Draw = false,
