@@ -29,7 +29,7 @@ function Core:draw()
   self.ActiveScene:draw()
 end
 
-function Core:update()
+function Core:update(dt)
 
   if self.NewScene then
     self.ActiveScene:exit()
@@ -38,7 +38,7 @@ function Core:update()
     self.ActiveScene:enter()
   end
 
-  self.ActiveScene:update()
+  self.ActiveScene:update(dt)
 end
 
 function Core:changeScene(scene)

@@ -11,7 +11,7 @@ function Loading:enter()
   -- TODO: Load loading image
 end
 
-function Loading:update()
+function Loading:update(dt)
   self.Core:changeScene("MainMenu")
 end
 

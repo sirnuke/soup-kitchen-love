@@ -17,7 +17,7 @@ function love.load()
   core = Core()
 end
 
-function love.update() core:update() end
+function love.update(dt) core:update(dt) end
 function love.draw() core:draw() end
 
 function love.keypressed(key) core:keyPressed(key) end

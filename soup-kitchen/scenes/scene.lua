@@ -36,7 +36,7 @@ function Scene:draw()
   end
 end
 
-function Scene:update()
+function Scene:update(dt)
   if not self.OverrideWarn.Update then
     Log.warn(tag, "Scene %s doesn't override :update()!", self.name)
     self.OverrideWarn.Update = true

@@ -10,7 +10,7 @@ InGame = Scene:extend("InGame")
 function InGame:enter()
 end
 
-function InGame:update()
+function InGame:update(dt)
 end
 
 function InGame:draw()
