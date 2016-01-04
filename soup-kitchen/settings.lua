@@ -10,7 +10,10 @@ local function generate_defaults(root)
     QuickExit = {
       Enabled = true,
       Key = "escape"
-    }
+    },
+  }
+  root.Graphics = {
+    Clear = { 255, 255, 255, 0 },
   }
 end
 

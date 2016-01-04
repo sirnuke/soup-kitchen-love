@@ -26,6 +26,7 @@ function Core:init()
 end
 
 function Core:draw()
+  love.graphics.clear(self.Settings.Graphics.Clear)
   self.ActiveScene:draw()
 end
 
