@@ -1,10 +1,17 @@
 -- Soup Kitchen
 -- Bryan DeGrendel (c) 2016
 
-require "soup-kitchen.settings"
+require "tests.setup"
 
-Log = require "soup-kitchen.log"
-Inspect = require "soup-kitchen.library.inspect"
+before_each(function ()
+  require "soup-kitchen.library.strict"
+end)
 
 describe("Settings", function()
+  require "soup-kitchen.settings"
+
+  it("performs basic initialization", function()
+    --require "soup-kitchen.library.strict"
+    settings = Settings()
+  end)
 end)
