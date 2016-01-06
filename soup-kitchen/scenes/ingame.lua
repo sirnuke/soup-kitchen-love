@@ -3,6 +3,8 @@
 
 require "scenes.scene"
 
+require "world.map"
+
 local tag = "InGame"
 
 InGame = Scene:extend("InGame")
@@ -15,9 +17,11 @@ function InGame:init(core)
     },
   }
   self.Background = self:loadImage("Background")
+  self.Map = nil
 end
 
 function InGame:enter()
+  self.Map = Map(self.Core)
 end
 
 function InGame:update(dt)
@@ -28,4 +32,5 @@ function InGame:draw()
 end
 
 function InGame:exit()
+  self.Map = nil
 end
