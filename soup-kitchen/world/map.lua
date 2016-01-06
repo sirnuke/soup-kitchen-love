@@ -4,6 +4,7 @@
 Map = Class("Map")
 
 function Map:init(core)
+  assert(Class.isInstance(core, Core))
   self.Core = core
   self.Core.Settings.Map = {
     Tile = {
