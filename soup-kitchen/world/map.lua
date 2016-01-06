@@ -3,10 +3,10 @@
 
 Map = Class("Map")
 
-function Map:init(core)
-  assert(Class.isInstance(core, Core))
-  self.Core = core
-  self.Core.Settings.Map = {
+function Map:init(settings)
+  assert(Class.isInstance(settings, Settings))
+  self.Settings = settings
+  self.Settings.Map = {
     Tile = {
       Dimensions = {
         Width = 32,

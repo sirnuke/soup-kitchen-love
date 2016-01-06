@@ -21,7 +21,7 @@ function InGame:init(core)
 end
 
 function InGame:enter()
-  self.Map = Map(self.Core)
+  self.Map = Map(self.Core.Settings)
 end
 
 function InGame:update(dt)
