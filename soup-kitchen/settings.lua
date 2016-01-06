@@ -18,6 +18,8 @@ local function generate_defaults(root)
   }
   root.Scenes = {
   }
+  root.Map = {
+  }
 end
 
 function Settings:init()
