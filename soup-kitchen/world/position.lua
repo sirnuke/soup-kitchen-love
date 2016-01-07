@@ -6,7 +6,7 @@ Position = Class("Position")
 function Position:init(settings, x, y)
   assert(Class.isInstance(settings, Settings))
   local maxWidth = settings.Map.Dimensions.Width * settings.Map.Tile.Dimensions.Width
-  local maxHeight = settings.Map.Dimensions.Heigth * settings.Map.Tile.Dimensions.Height
+  local maxHeight = settings.Map.Dimensions.Height * settings.Map.Tile.Dimensions.Height
   assert(type(x) == "number" and x >= 0 and x < maxWidth,
     string.format("x:%i is out of range [0..%i)", x, maxWidth))
   assert(type(y) == "number" and y >= 0 and y < maxHeight,
