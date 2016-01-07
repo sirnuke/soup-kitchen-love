@@ -15,6 +15,6 @@ function Coordinate:init(settings, x, y)
 end
 
 function Coordinate:duplicate()
-  return Coordinate(self.X, self.Y)
+  return Coordinate(self.Settings, self.X, self.Y)
 end
 

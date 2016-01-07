@@ -17,5 +17,5 @@ function Position:init(settings, x, y)
 end
 
 function Position:duplicate()
-  return Position(self.X, self.Y)
+  return Position(self.Settings, self.X, self.Y)
 end
