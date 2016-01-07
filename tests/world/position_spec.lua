@@ -48,5 +48,15 @@ describe("position", function()
     assert.has_error(function() Coordinate(settings,  x,  0) end)
   end)
 
+  it("duplicates", function()
+    x, y = maxWidth - 10, maxHeight - 10
+    a = Position(settings, x, y)
+    b = a:duplicate()
+    assert.are_not.equal(a, b)
+    assert.are.same(a, b)
+    b.X, b.Y = b.X + 1, b.Y + 1
+    assert.are_not.equal(a.X, b.X)
+    assert.are_not.equal(a.Y, b.Y)
+  end)
 end)
 
