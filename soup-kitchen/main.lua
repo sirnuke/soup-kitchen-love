@@ -6,6 +6,7 @@ Class = require "library.30log"
 
 require "library.strict"
 
+Utilities = require "utilities"
 Log = require "log"
 
 local tag, core = "Main", nil
