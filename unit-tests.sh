@@ -10,4 +10,4 @@ if ! type "busted" > /dev/null ; then
   exit 1
 fi
 
-busted --lua=luajit tests/
+busted --lua=luajit --lpath=soup-kitchen/?.lua tests/
