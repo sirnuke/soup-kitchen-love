@@ -1,6 +1,8 @@
 -- Soup Kitchen
 -- Bryan DeGrendel (c) 2016
 
+require "world.position"
+
 Coordinate = Class("Position")
 
 function Coordinate:init(settings, x, y)
@@ -18,3 +20,9 @@ function Coordinate:duplicate()
   return Coordinate(self.Settings, self.X, self.Y)
 end
 
+function Coordinate:toPosition()
+  local tileWidth = self.Settings.Map.Tile.Dimensions.Width
+  local tileHeight = self.Settings.Map.Tile.Dimensions.Height
+  return Position(self.Settings, self.X * tileWidth + tileWidth / 2,
+                  self.Y * tileHeight + tileHeight / 2)
+end
