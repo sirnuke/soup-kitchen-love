@@ -43,6 +43,12 @@ describe("coordinate", function()
     assert.has_error(function() Coordinate(settings,  x,  0) end)
   end)
 
+  it("rejects decimal values", function()
+    x, y = settings.Map.Dimensions.Width - 1.5, settings.Map.Dimensions.Height - 1.5
+    assert.has_error(function() Coordinate(settings, x, 0) end)
+    assert.has_error(function() Coordinate(settings, 0, y) end)
+  end)
+
   it("duplicates", function()
     x, y = settings.Map.Dimensions.Width - 2, settings.Map.Dimensions.Height - 2
     a = Coordinate(settings, x, y)
