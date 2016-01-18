@@ -1,6 +1,11 @@
 -- Soup Kitchen
 -- Bryan DeGrendel (c) 2016
 
+local tag = "Map"
+
+require "world.position"
+require "world.tile"
+
 Map = Class("Map")
 
 function Map:init(settings)
@@ -18,4 +23,12 @@ function Map:init(settings)
       Height = 30,
     },
   }
+
+  self.Data = {}
+  for y = 0, self.Settings.Map.Dimensions.Height - 1 do
+    self.Data[y] = {}
+    for x = 0, self.Settings.Map.Dimensions.Width - 1 do
+      self.Data[y][x] = Tile(Position(self.Settings, x, y))
+    end
+  end
 end
