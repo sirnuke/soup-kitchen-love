@@ -9,7 +9,7 @@ MainMenu = Scene:extend("MainMenu")
 
 function MainMenu:init(core)
   MainMenu.super:init(core)
-  self.Core.Settings.Scenes.MainMenu = {
+  Settings.Scenes.MainMenu = {
     Images = {
       Background = "background.png"
     },

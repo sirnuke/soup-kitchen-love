@@ -9,7 +9,7 @@ Loading = Scene:extend("Loading")
 
 function Loading:init(core)
   Loading.super:init(core)
-  self.Core.Settings.Scenes.Loading = {
+  Settings.Scenes.Loading = {
     Images = {
       Background = "background.png"
     },

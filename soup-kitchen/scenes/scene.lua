@@ -16,8 +16,8 @@ function Scene:init(core)
 end
 
 function Scene:loadImage(key)
-  assert(self.Core.Settings.Scenes[self.name].Images[key])
-  return self.Core:loadImage(self.name, self.Core.Settings.Scenes[self.name].Images[key])
+  assert(Settings.Scenes[self.name].Images[key])
+  return self.Core:loadImage(self.name, Settings.Scenes[self.name].Images[key])
 end
 
 function Scene:enter()

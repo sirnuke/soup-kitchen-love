@@ -11,7 +11,7 @@ InGame = Scene:extend("InGame")
 
 function InGame:init(core)
   InGame.super:init(core)
-  self.Core.Settings.Scenes.InGame = {
+  Settings.Scenes.InGame = {
     Images = {
       Background = "background.png"
     },
@@ -21,7 +21,7 @@ function InGame:init(core)
 end
 
 function InGame:enter()
-  self.Map = Map(self.Core.Settings)
+  self.Map = Map()
 end
 
 function InGame:update(dt)
