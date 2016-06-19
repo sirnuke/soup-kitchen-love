@@ -90,6 +90,7 @@ Base for all pawns in the world.
 * Smaller than tiles.
 * Block other pawns.
 * Implements pathfinding.
+* Virtual functions for converting to/from string data.
 
 Objects
 -------
@@ -102,5 +103,7 @@ Base for all objects in the world.
 * May not overlap with other objects.
 * Does not need to be continuous.
 * Determines whether a given coordinate is blocked.
-* Determines whether a given coordinate has a trigger.
+* Determines whether a pawn can interact with a tile.
+* Children track additional state, as necessary.
+* Virtual functions for converting to/from string data.
 
