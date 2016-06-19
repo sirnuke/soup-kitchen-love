@@ -3,7 +3,7 @@
 
 local tag = "Map"
 
-require "world.position"
+require "world.coordinate"
 require "world.tile"
 
 Map = Class("Map")
@@ -26,7 +26,7 @@ function Map:init()
   for y = 0, Settings.Map.Dimensions.Height - 1 do
     self.Data[y] = {}
     for x = 0, Settings.Map.Dimensions.Width - 1 do
-      self.Data[y][x] = Tile(Position(x, y))
+      self.Data[y][x] = Tile(Coordinate(x, y))
     end
   end
 end

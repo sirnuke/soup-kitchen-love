@@ -3,8 +3,9 @@
 
 Tile = Class("Tile")
 
-function Tile:init(position)
-  assert(Class.isInstance(position, Position))
-  self.Position = position:duplicate()
-  self.Occupant = nil
+function Tile:init(coordinate)
+  assert(Class.isInstance(coordinate, Coordinate))
+  self.Coordinate = coordinate:duplicate()
+  self.Object = nil
+  self.Pawn = nil
 end
