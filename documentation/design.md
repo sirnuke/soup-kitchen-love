@@ -1,6 +1,33 @@
 Design
 ======
 
+Root
+----
+
+### Core
+
+### Main
+
+### Image
+
+Class wrapping around a single image.
+
+* Tracks one Love image.
+* Tracks (x,y) position.
+* Implements a draw function.
+
+### Animation
+
+Class wrapping around a series of images.
+
+### Session
+
+Stores a game session.
+
+* Includes game session metadata.
+* Includes a Map instance.
+* Implements saving/loading.
+
 Scenes
 ------
 
@@ -32,17 +59,6 @@ Base scene for drawing the standard in-game view.
 ### MapEditor
 
 UI for creating maps.
-
-Session
--------
-
-### Session
-
-Stores a game session.
-
-* Includes game session metadata.
-* Includes a Map instance.
-* Implements saving/loading.
 
 World
 -----
@@ -77,8 +93,9 @@ A single tile in the map, representing a coordinate.
 * Only one per coordinate.
 * May contain part of a single object.
 * Does not attempt to directly manipulate objects.
-* Open or blocked determined when object is set.
+* Object determines whether tile is blocked or open.
 * Does not track pawns.
+* Pass through calls for drawing objects.
 
 Pawns
 -----
@@ -91,6 +108,7 @@ Base for all pawns in the world.
 * Block other pawns.
 * Implements pathfinding.
 * Virtual functions for converting to/from string data.
+* Draws base pawn image using pretranslated coordinates.
 
 Objects
 -------
@@ -106,4 +124,6 @@ Base for all objects in the world.
 * Determines whether a pawn can interact with a tile.
 * Children track additional state, as necessary.
 * Virtual functions for converting to/from string data.
+* Draw the base tile image using pretranslated coordinates.
+* Draws local UI elements using pretranslated coordinates and local state.
 
