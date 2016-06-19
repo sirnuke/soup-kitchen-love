@@ -7,8 +7,8 @@ local tag = "MainMenu"
 
 MainMenu = Scene:extend("MainMenu")
 
-function MainMenu:init(core)
-  MainMenu.super:init(core)
+function MainMenu:init()
+  MainMenu.super:init()
   Settings.Scenes.MainMenu = {
     Images = {
       Background = "background.png"
@@ -22,9 +22,9 @@ function MainMenu:draw()
 end
 
 function MainMenu:keyPressed(key)
-  self.Core:changeScene("InGame")
+  Core:changeScene("InGame")
 end
 
 function MainMenu:mousePressed(x, y, button)
-  self.Core:changeScene("InGame")
+  Core:changeScene("InGame")
 end

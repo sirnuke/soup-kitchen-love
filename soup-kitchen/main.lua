@@ -9,19 +9,19 @@ require "library.strict"
 Utilities = require "utilities"
 Log = require "log"
 
-local tag, core = "Main", nil
+local tag = "Main"
 
 require "core"
 
 function love.load()
   Log.info(tag, "Loading...")
-  core = Core()
+  Core:load()
 end
 
-function love.update(dt) core:update(dt) end
-function love.draw() core:draw() end
+function love.update(dt) Core:update(dt) end
+function love.draw() Core:draw() end
 
-function love.keypressed(key) core:keyPressed(key) end
-function love.keyreleased(key) core:keyReleased(key) end
-function love.mousepressed(x, y, button) core:mousePressed(x, y, button) end
-function love.mousereleased(x, y, button) core:mouseReleased(x, y, button) end
+function love.keypressed(key) Core:keyPressed(key) end
+function love.keyreleased(key) Core:keyReleased(key) end
+function love.mousepressed(x, y, button) Core:mousePressed(x, y, button) end
+function love.mousereleased(x, y, button) Core:mouseReleased(x, y, button) end

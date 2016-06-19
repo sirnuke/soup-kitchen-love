@@ -7,8 +7,8 @@ local tag = "Loading"
 
 Loading = Scene:extend("Loading")
 
-function Loading:init(core)
-  Loading.super:init(core)
+function Loading:init()
+  Loading.super:init()
   Settings.Scenes.Loading = {
     Images = {
       Background = "background.png"
@@ -26,7 +26,7 @@ function Loading:enter()
 end
 
 function Loading:update(dt)
-  self.Core:changeScene(self.NextScene)
+  Core:changeScene(self.NextScene)
 end
 
 function Loading:draw()

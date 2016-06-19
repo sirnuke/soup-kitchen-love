@@ -5,8 +5,7 @@ local tag = "Scene"
 
 Scene = Class("Scene")
 
-function Scene:init(core)
-  self.Core = core
+function Scene:init()
   self.OverrideWarn = {
     Enter = false,
     Draw = false,
@@ -17,7 +16,7 @@ end
 
 function Scene:loadImage(key)
   assert(Settings.Scenes[self.name].Images[key])
-  return self.Core:loadImage(self.name, Settings.Scenes[self.name].Images[key])
+  return Core:loadImage(self.name, Settings.Scenes[self.name].Images[key])
 end
 
 function Scene:enter()

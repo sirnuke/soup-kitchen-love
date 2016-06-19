@@ -9,8 +9,8 @@ local tag = "InGame"
 
 InGame = Scene:extend("InGame")
 
-function InGame:init(core)
-  InGame.super:init(core)
+function InGame:init()
+  InGame.super:init()
   Settings.Scenes.InGame = {
     Images = {
       Background = "background.png"
