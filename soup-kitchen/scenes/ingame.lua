@@ -28,7 +28,7 @@ function InGame:update(dt)
 end
 
 function InGame:draw()
-  love.graphics.draw(self.Background)
+  self.Background:draw()
 end
 
 function InGame:exit()
