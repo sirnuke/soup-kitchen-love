@@ -8,10 +8,8 @@ require "world.tile"
 
 Map = Class("Map")
 
-function Map:init(settings)
-  assert(Class.isInstance(settings, Settings))
-  self.Settings = settings
-  self.Settings.Map = {
+function Map:init()
+  Settings.Map = {
     Tile = {
       Dimensions = {
         Width = 32,
@@ -25,10 +23,10 @@ function Map:init(settings)
   }
 
   self.Data = {}
-  for y = 0, self.Settings.Map.Dimensions.Height - 1 do
+  for y = 0, Settings.Map.Dimensions.Height - 1 do
     self.Data[y] = {}
-    for x = 0, self.Settings.Map.Dimensions.Width - 1 do
-      self.Data[y][x] = Tile(Position(self.Settings, x, y))
+    for x = 0, Settings.Map.Dimensions.Width - 1 do
+      self.Data[y][x] = Tile(Position(x, y))
     end
   end
 end
