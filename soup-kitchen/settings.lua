@@ -3,7 +3,7 @@
 
 local tag = "Settings"
 
-Settings = Class("Settings")
+local SettingsImpl = Class("settings")
 
 local function generate_defaults(root)
   root.Magic = {
@@ -22,6 +22,8 @@ local function generate_defaults(root)
   }
 end
 
-function Settings:init()
+function SettingsImpl:init()
   generate_defaults(self)
 end
+
+Settings = SettingsImpl()
