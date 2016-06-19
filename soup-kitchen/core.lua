@@ -9,17 +9,16 @@ require "scenes.ingame"
 
 local tag = "Core"
 
-CoreImpl = Class("Core")
+local CoreImpl = Class("Core")
 Core = nil
 
-function CoreImpl:init()
-  Log.info(tag, "Initializing")
-  self.Scenes = nil
-  self.NewScene = nil
+function StartGame()
+  Log.info(tag, "Starting...")
+  Core = CoreImpl()
+  Core:load()
 end
 
 function CoreImpl:load()
-  Log.info(tag, "Loading")
   self.Scenes = {
     Loading = Loading(),
     MainMenu = MainMenu(),
@@ -83,5 +82,3 @@ end
 function CoreImpl:mouseReleased(x, y, button)
   self.ActiveScene:mouseReleased(x, y, button)
 end
-
-Core = CoreImpl()

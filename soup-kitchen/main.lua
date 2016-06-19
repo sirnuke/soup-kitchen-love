@@ -15,7 +15,7 @@ require "core"
 
 function love.load()
   Log.info(tag, "Loading...")
-  Core:load()
+  StartGame()
 end
 
 function love.update(dt) Core:update(dt) end
