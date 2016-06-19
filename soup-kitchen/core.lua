@@ -13,7 +13,6 @@ Core = Class("Core")
 
 function Core:init()
   Log.info(tag, "Initializing")
-  self.Settings = Settings()
   self.Scenes = {
     Loading = Loading(self),
     MainMenu = MainMenu(self),
@@ -27,7 +26,7 @@ function Core:init()
 end
 
 function Core:draw()
-  love.graphics.clear(self.Settings.Graphics.Clear)
+  love.graphics.clear(Settings.Graphics.Clear)
   self.ActiveScene:draw()
 end
 
@@ -55,13 +54,13 @@ function Core:changeScene(scene)
 end
 
 function Core:loadImage(scope, name)
-  local image = love.graphics.newImage(self.Settings.Graphics.Directory..scope.."/"..name)
+  local image = love.graphics.newImage(Settings.Graphics.Directory..scope.."/"..name)
   assert(image)
   return image
 end
 
 function Core:keyPressed(key)
-  if self.Settings.Magic.QuickExit.Enabled and key == self.Settings.Magic.QuickExit.Key then
+  if Settings.Magic.QuickExit.Enabled and key == Settings.Magic.QuickExit.Key then
     os.exit(true)
   end
   self.ActiveScene:keyPressed(key)
