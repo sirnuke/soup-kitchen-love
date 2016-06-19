@@ -10,4 +10,6 @@ if ! type "busted" > /dev/null ; then
   exit 1
 fi
 
+cd `dirname $0`
+
 busted --lua=luajit --lpath=soup-kitchen/?.lua tests/
