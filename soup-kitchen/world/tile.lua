@@ -3,18 +3,17 @@
 
 Tile = Class("Tile")
 
-function Tile:init(coordinate)
+function Tile:init(coordinate, object)
   assert(Class.isInstance(coordinate, Coordinate))
   self.Coordinate = coordinate:duplicate()
   self.Object = nil
   self.Blocked = false
 end
 
-function Tile:setObject(object, blocked)
+function Tile:setObject(object)
   assert(Class.isInstance(object, Object))
-  assert(type(blocked) == "boolean")
   self.Object = object
-  self.Blocked = blocked
+  self.Blocked = object:isBlocked()
 end
 
 function Tile:isBlocked()

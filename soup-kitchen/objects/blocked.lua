@@ -18,3 +18,7 @@ end
 
 function Blocked:draw()
 end
+
+function Blocked:isBlocked()
+  return true
+end

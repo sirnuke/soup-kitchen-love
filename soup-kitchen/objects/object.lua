@@ -16,3 +16,7 @@ function Object:draw()
     self.OverrideWarn.Draw = true
   end
 end
+
+function Object:isBlocked()
+  return false
+end
