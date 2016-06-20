@@ -4,6 +4,7 @@
 Object = Class("Object")
 
 function Object:init(coordinate)
+  assert(Class.isInstance(coordinate, Coordinate))
   self.OverrideWarn = {
     Draw = false,
   }
