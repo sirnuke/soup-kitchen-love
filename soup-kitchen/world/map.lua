@@ -23,10 +23,31 @@ function Map:init()
   }
 
   self.Data = {}
-  for y = 0, Settings.Map.Dimensions.Height - 1 do
+  for y = 1, Settings.Map.Dimensions.Height do
     self.Data[y] = {}
-    for x = 0, Settings.Map.Dimensions.Width - 1 do
-      self.Data[y][x] = Tile(Coordinate(x, y))
+    for x = 1, Settings.Map.Dimensions.Width do
+      self.Data[y][x] = Tile(Coordinate(x - 1, y - 1))
     end
   end
+
+  self.Pawns = {}
+end
+
+function Map:eachTile(func)
+  for y = 1, Settings.Map.Dimensions.Height do
+    for x = 1, Settings.Map.Dimensions.Width do
+      func(self.Data[y][x])
+    end
+  end
+end
+
+function Map:eachPawn(func)
+  for key, pawn in ipairs(self.Pawns) do
+    func(pawn)
+  end
+end
+
+function Map:draw()
+  self:eachTile(function(tile) tile:draw() end)
+  self:eachPawn(function(pawn) pawn:draw() end)
 end

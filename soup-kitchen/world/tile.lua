@@ -20,3 +20,9 @@ end
 function Tile:isBlocked()
   return self.Blocked
 end
+
+function Tile:draw()
+  if self.Object ~= nil then
+    self.Object:draw(self.Coordinate)
+  end
+end
