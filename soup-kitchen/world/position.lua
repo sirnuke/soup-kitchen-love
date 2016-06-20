@@ -17,3 +17,12 @@ end
 function Position:duplicate()
   return Position(self.X, self.Y)
 end
+
+function Position:toCoordinate()
+  return Coordinate(math.floor(self.X / Settings.Map.Tile.Dimensions.Width),
+                    math.floor(self.Y / Settings.Map.Tile.Dimensions.Height))
+end
+
+function Position:toScreen()
+  return self.X, self.Y
+end

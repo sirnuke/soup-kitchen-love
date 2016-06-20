@@ -47,6 +47,22 @@ describe("position", function()
     assert.has_error(function() Coordinate( x,  0) end)
   end)
 
+  it("converts to a valid coordinate", function()
+    x, y = 5 * tileWidth + 5, 5 * tileHeight + 5
+    a = Position(x, y)
+    b = a:toCoordinate()
+    assert.are.equal(5, b.X)
+    assert.are.equal(5, b.Y)
+  end)
+
+  it("converts to relative screen point", function()
+    x, y = 5 * tileWidth + 5, 5 * tileHeight + 5
+    a = Position(x, y)
+    x, y = a:toScreen()
+    assert.are.equal(x, a.X)
+    assert.are.equal(y, a.Y)
+  end)
+
   it("duplicates", function()
     x, y = maxWidth - 10, maxHeight - 10
     a = Position(x, y)
