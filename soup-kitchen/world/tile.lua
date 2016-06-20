@@ -22,7 +22,5 @@ function Tile:isBlocked()
 end
 
 function Tile:draw()
-  if self.Object ~= nil then
-    self.Object:draw(self.Coordinate)
-  end
+  if self.Object ~= nil then self.Object:draw() end
 end
