@@ -20,7 +20,7 @@ end
 
 function Blocked:init(coordinate, type)
   Blocked.super:init(coordinate)
-  self.X, self.Y = coordinate:toTopLeft()
+  self.X, self.Y = coordinate:toScreen()
   self.Type = type
 
   loadStaticData()

@@ -25,6 +25,6 @@ function Coordinate:toPosition()
   return Position(self.X * tileWidth + tileWidth / 2, self.Y * tileHeight + tileHeight / 2)
 end
 
-function Coordinate:toTopLeft()
+function Coordinate:toScreen()
   return self.X * Settings.Map.Tile.Dimensions.Width, self.Y * Settings.Map.Tile.Dimensions.Height
 end

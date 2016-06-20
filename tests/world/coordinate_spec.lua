@@ -48,6 +48,26 @@ describe("coordinate", function()
     assert.has_error(function() Coordinate(0, y) end)
   end)
 
+  it("converts to relative screen coordinates", function()
+    x, y = Settings.Map.Dimensions.Width - 1, Settings.Map.Dimensions.Height - 1
+    a = Coordinate(x, y)
+    x, y = a:toScreen()
+    assert.are.equal(x, (Settings.Map.Dimensions.Width - 1) * Settings.Map.Tile.Dimensions.Width)
+    assert.are.equal(y, (Settings.Map.Dimensions.Height - 1) * Settings.Map.Tile.Dimensions.Height)
+  end)
+
+  it("converts to relative position", function()
+    x, y = Settings.Map.Dimensions.Width - 1, Settings.Map.Dimensions.Height - 1
+    a = Coordinate(x, y)
+    b = a:toPosition()
+    x = (Settings.Map.Dimensions.Width - 1) * Settings.Map.Tile.Dimensions.Width
+      + Settings.Map.Tile.Dimensions.Width / 2
+    y = (Settings.Map.Dimensions.Height - 1) * Settings.Map.Tile.Dimensions.Height
+      + Settings.Map.Tile.Dimensions.Height / 2
+    assert.are.equal(x, b.X)
+    assert.are.equal(y, b.Y)
+  end)
+
   it("duplicates", function()
     x, y = Settings.Map.Dimensions.Width - 2, Settings.Map.Dimensions.Height - 2
     a = Coordinate(x, y)

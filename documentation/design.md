@@ -6,6 +6,15 @@ Root
 
 ### Core
 
+Singleton representing the heart of the game.
+
+### Settings
+
+Singleton storing constants used throughout the code.
+
+* Constants should be set in the class where they are most relevant.
+* Constants should not change during execution.
+
 ### Animation
 
 Class wrapping around a series of images.
@@ -66,15 +75,18 @@ Contains the physical state of the game world.
 
 An (x,y) tile on the map.
 
-* Can convert to a point.
+* Can convert to a map position.
 * Can be duplicated.
+* Can be converted to relative screen point.
 
-### Point
+### Position
 
 An arbitrary (x,y) position on the map.
 
-* Can convert to a coordinate.
+* Can convert to a map coordinate.
 * Can be duplicated.
+* Should not be used when referring directly to the screen.
+* Can be converted to relative screen point.
 
 ### Tile
 
