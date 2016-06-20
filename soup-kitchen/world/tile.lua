@@ -11,7 +11,7 @@ function Tile:init(coordinate, object)
 end
 
 function Tile:setObject(object)
-  assert(Class.isInstance(object, Object))
+  assert(Class.isInstance(object, Object) or object.class:extends(Object))
   self.Object = object
   self.Blocked = object:isBlocked()
 end
