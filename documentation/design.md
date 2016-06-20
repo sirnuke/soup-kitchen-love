@@ -6,16 +6,6 @@ Root
 
 ### Core
 
-### Main
-
-### Image
-
-Class wrapping around a single image.
-
-* Tracks one Love image.
-* Tracks (x,y) position.
-* Implements a draw function.
-
 ### Animation
 
 Class wrapping around a series of images.
@@ -108,7 +98,7 @@ Base for all pawns in the world.
 * Block other pawns.
 * Implements pathfinding.
 * Virtual functions for converting to/from string data.
-* Draws base pawn image using pretranslated coordinates.
+* Draws base pawn image when set in translated coordinates.
 
 Objects
 -------
@@ -117,13 +107,13 @@ Objects
 
 Base for all objects in the world.
 
-* Must contain at least one coordinate.
+* Must exist at one coordinate.
 * May not overlap with other objects.
-* Does not need to be continuous.
 * Determines whether a given coordinate is blocked.
-* Determines whether a pawn can interact with a tile.
+* Determines whether and how a pawn can interact with a tile.
 * Children track additional state, as necessary.
-* Virtual functions for converting to/from string data.
-* Draw the base tile image using pretranslated coordinates.
-* Draws local UI elements using pretranslated coordinates and local state.
+* Draws the base tile image when set in translated coordinates.
 
+### Blocked
+
+Generic class for a simple blocked tile.
