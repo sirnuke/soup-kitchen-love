@@ -17,8 +17,8 @@ function InGame:init()
     },
     Layout = {
       Map = {
-        X = 10,
-        Y = 10,
+        X = 0,
+        Y = 0,
       },
     },
   }
@@ -28,6 +28,7 @@ end
 
 function InGame:enter()
   self.Map = Map()
+  self.Map:generateDebugMap()
 end
 
 function InGame:update(dt)

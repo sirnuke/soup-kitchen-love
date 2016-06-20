@@ -6,6 +6,8 @@ local tag = "Map"
 require "world.coordinate"
 require "world.tile"
 
+require "objects.blocked"
+
 Map = Class("Map")
 
 function Map:init()
@@ -17,8 +19,8 @@ function Map:init()
       },
     },
     Dimensions = {
-      Width = 30,
-      Height = 30,
+      Width = 25,
+      Height = 25,
     },
   }
 
@@ -31,6 +33,31 @@ function Map:init()
   end
 
   self.Pawns = {}
+end
+
+function Map:generateDebugMap()
+  local coord
+
+  for y = 1, Settings.Map.Dimensions.Height - 1 do
+    coord = Coordinate(10, y)
+    self:getTile(coord):setObject(Blocked(coord, "Blocked"))
+  end
+  coord = Coordinate(0, 0)
+  self:getTile(coord):setObject(Blocked(coord, "Blocked"))
+  coord = Coordinate(0, Settings.Map.Dimensions.Height - 1)
+  self:getTile(coord):setObject(Blocked(coord, "Blocked"))
+  coord = Coordinate(Settings.Map.Dimensions.Width - 1, Settings.Map.Dimensions.Height - 1)
+  self:getTile(coord):setObject(Blocked(coord, "Blocked"))
+  coord = Coordinate(Settings.Map.Dimensions.Width - 1, 0)
+  self:getTile(coord):setObject(Blocked(coord, "Blocked"))
+end
+
+function Map:getTile(coordinate)
+  assert(Class.isInstance(coordinate, Coordinate))
+  assert(coordinate.X >= 0 and coordinate.Y >= 0)
+  assert(coordinate.X < Settings.Map.Dimensions.Width)
+  assert(coordinate.Y < Settings.Map.Dimensions.Height)
+  return self.Data[coordinate.Y + 1][coordinate.X + 1]
 end
 
 function Map:eachTile(func)
