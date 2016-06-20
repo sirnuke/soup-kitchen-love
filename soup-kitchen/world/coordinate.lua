@@ -24,3 +24,7 @@ function Coordinate:toPosition()
   local tileHeight = Settings.Map.Tile.Dimensions.Height
   return Position(self.X * tileWidth + tileWidth / 2, self.Y * tileHeight + tileHeight / 2)
 end
+
+function Coordinate:toTopLeft()
+  return self.X * Settings.Map.Tile.Dimensions.Width, self.Y * Settings.Map.Tile.Dimensions.Height
+end
