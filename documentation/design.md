@@ -117,15 +117,13 @@ Objects
 
 ### Object
 
-Base for all objects in the world.
+Base for all logical objects in the world.
 
-* Must exist at one coordinate.
+* Each coordinate must correspond to at most one object.
+* Does not need to be continuous.
 * May not overlap with other objects.
 * Determines whether a given coordinate is blocked.
 * Determines whether and how a pawn can interact with a tile.
+* Determines image and animation used for tile.
 * Children track additional state, as necessary.
-* Draws the base tile image when set in translated coordinates.
 
-### Blocked
-
-Generic class for a simple blocked tile.

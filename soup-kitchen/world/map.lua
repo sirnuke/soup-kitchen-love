@@ -6,8 +6,6 @@ local tag = "Map"
 require "world.coordinate"
 require "world.tile"
 
-require "objects.blocked"
-
 Map = Class("Map")
 
 function Map:init()
@@ -39,17 +37,16 @@ function Map:generateDebugMap()
   local coord
 
   for y = 0, Settings.Map.Dimensions.Height - 1 do
-    coord = Coordinate(5, y)
-    self:getTile(coord):setObject(Blocked(coord, "Blocked"))
+    self:insertDebugBlocked(Coordinate(5, y))
   end
-  coord = Coordinate(0, 0)
-  self:getTile(coord):setObject(Blocked(coord, "Blocked"))
-  coord = Coordinate(0, Settings.Map.Dimensions.Height - 1)
-  self:getTile(coord):setObject(Blocked(coord, "Blocked"))
-  coord = Coordinate(Settings.Map.Dimensions.Width - 1, Settings.Map.Dimensions.Height - 1)
-  self:getTile(coord):setObject(Blocked(coord, "Blocked"))
-  coord = Coordinate(Settings.Map.Dimensions.Width - 1, 0)
-  self:getTile(coord):setObject(Blocked(coord, "Blocked"))
+  self:insertDebugBlocked(Coordinate(0, 0))
+  self:insertDebugBlocked(Coordinate(0, Settings.Map.Dimensions.Height - 1))
+  self:insertDebugBlocked(Coordinate(Settings.Map.Dimensions.Width - 1, Settings.Map.Dimensions.Height - 1))
+  self:insertDebugBlocked(Coordinate(Settings.Map.Dimensions.Width - 1, 0))
+end
+
+function Map:insertDebugBlocked(coord)
+  self:getTile(coord):update(true, "Blocked")
 end
 
 function Map:getTile(coordinate)

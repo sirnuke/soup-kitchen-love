@@ -3,17 +3,34 @@
 
 Tile = Class("Tile")
 
-function Tile:init(coordinate, object)
+local images = nil
+
+local function loadStaticData()
+  if images ~= nil then return end
+  images = {}
+  Settings.Map.Tile.Blocked = {
+    "Blocked",
+  }
+  for key,value in ipairs(Settings.Map.Tile.Blocked) do
+    images[value] = Core:loadImage("Tiles", value..".png")
+  end
+end
+
+
+function Tile:init(coordinate)
   assert(Class.isInstance(coordinate, Coordinate))
+
+  loadStaticData()
+
   self.Coordinate = coordinate:duplicate()
-  self.Object = nil
+  self.X, self.Y = coordinate:toScreen()
+  self.Image = nil
   self.Blocked = false
 end
 
-function Tile:setObject(object)
-  assert(Class.isInstance(object, Object) or object.class:extends(Object))
-  self.Object = object
-  self.Blocked = object:isBlocked()
+function Tile:update(blocked, type)
+  self.Blocked = blocked
+  self.Image = images[type]
 end
 
 function Tile:isBlocked()
@@ -21,5 +38,5 @@ function Tile:isBlocked()
 end
 
 function Tile:draw()
-  if self.Object ~= nil then self.Object:draw() end
+  if self.Image ~= nil then love.graphics.draw(self.Image, self.X, self.Y) end
 end
