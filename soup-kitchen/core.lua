@@ -3,8 +3,6 @@
 
 require "settings"
 
-require "image"
-
 require "scenes.loading"
 require "scenes.mainmenu"
 require "scenes.ingame"
@@ -60,11 +58,10 @@ function CoreImpl:changeScene(scene)
   self.NewScene = self.Scenes[scene]
 end
 
-function CoreImpl:loadImage(scope, name, x, y)
+function CoreImpl:loadImage(scope, name)
   local data = love.graphics.newImage(Settings.Graphics.Directory..scope.."/"..name)
   assert(data)
-  local image = Image(data, x, y)
-  return image
+  return data
 end
 
 function CoreImpl:keyPressed(key)

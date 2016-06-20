@@ -34,7 +34,7 @@ function InGame:update(dt)
 end
 
 function InGame:draw()
-  self.Background:draw()
+  love.graphics.draw(self.Background)
   -- Draw Map
   love.graphics.push()
   love.graphics.translate(Settings.Scenes.InGame.Layout.Map.X, Settings.Scenes.InGame.Layout.Map.Y)

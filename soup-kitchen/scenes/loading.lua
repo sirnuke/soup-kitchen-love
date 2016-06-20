@@ -30,7 +30,7 @@ function Loading:update(dt)
 end
 
 function Loading:draw()
-  self.Background:draw()
+  love.graphics.draw(self.Background)
 end
 
 function Loading:exit()

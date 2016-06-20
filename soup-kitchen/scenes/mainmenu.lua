@@ -18,7 +18,7 @@ function MainMenu:init()
 end
 
 function MainMenu:draw()
-  self.Background:draw()
+  love.graphics.draw(self.Background)
 end
 
 function MainMenu:keyPressed(key)
