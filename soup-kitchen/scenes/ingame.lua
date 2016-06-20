@@ -17,6 +17,10 @@ function InGame:init()
     },
     Layout = {
       Map = {
+        X = 560,
+        Y = 40,
+      },
+      SideBar = {
         X = 0,
         Y = 0,
       },
@@ -42,7 +46,6 @@ function InGame:draw()
   self.Map:draw()
   love.graphics.pop()
   -- Draw sidebar
-  -- Draw topbar
 end
 
 function InGame:exit()

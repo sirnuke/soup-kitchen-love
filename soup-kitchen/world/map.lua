@@ -19,8 +19,8 @@ function Map:init()
       },
     },
     Dimensions = {
-      Width = 25,
-      Height = 25,
+      Width = 20,
+      Height = 20,
     },
   }
 
@@ -38,8 +38,8 @@ end
 function Map:generateDebugMap()
   local coord
 
-  for y = 1, Settings.Map.Dimensions.Height - 1 do
-    coord = Coordinate(10, y)
+  for y = 0, Settings.Map.Dimensions.Height - 1 do
+    coord = Coordinate(5, y)
     self:getTile(coord):setObject(Blocked(coord, "Blocked"))
   end
   coord = Coordinate(0, 0)
