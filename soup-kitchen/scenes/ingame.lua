@@ -54,5 +54,9 @@ function InGame:exit()
 end
 
 function InGame:mousePressed(x, y, button)
-  -- TODO: determine if mouse press is relevant
+  if x < Settings.Scenes.InGame.Layout.SideBar.X then
+    Log.info(tag, "Map press!")
+  else
+    Log.info(tag, "Sidebar press!")
+  end
 end
