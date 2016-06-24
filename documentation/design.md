@@ -55,6 +55,8 @@ Entry point for players.
 
 Base scene for drawing the standard in-game view.
 
+* Tracks the overall InGame user interface.
+
 ### MapEditor
 
 UI for creating maps.
@@ -70,6 +72,8 @@ Contains the physical state of the game world.
 * List of all objects.
 * List of all pawns.
 * Implements converting to/from savable string data.
+* Implements code for drawing the map.
+* Does not interact with the user interface.
 
 ### Coordinate
 
