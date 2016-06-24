@@ -17,7 +17,7 @@ function Map:init()
       },
     },
     Dimensions = {
-      Width = 20,
+      Width = 25,
       Height = 20,
     },
   }

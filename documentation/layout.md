@@ -9,6 +9,8 @@ Screen
 InGame
 ------
 
-Reserved UI from (0,0) to (479, 719)
-
-Map is (560,40) to (1199,679) with 20x20 tiles
+* Reserved UI from (800,0) to (1279,719)
+* Map and chrome is (0,0) to (799,719)
+* Tile size is 32 by 32
+* Map is 25 by 20 tiles
+* Centered map is (00,40) to (799,680)

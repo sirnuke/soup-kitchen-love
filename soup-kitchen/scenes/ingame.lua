@@ -17,11 +17,11 @@ function InGame:init()
     },
     Layout = {
       Map = {
-        X = 560,
+        X = 0,
         Y = 40,
       },
       SideBar = {
-        X = 0,
+        X = 800,
         Y = 0,
       },
     },
@@ -36,6 +36,7 @@ function InGame:enter()
 end
 
 function InGame:update(dt)
+  -- TODO: Update mouse interface
 end
 
 function InGame:draw()
@@ -50,4 +51,8 @@ end
 
 function InGame:exit()
   self.Map = nil
+end
+
+function InGame:mousePressed(x, y, button)
+  -- TODO: determine if mouse press is relevant
 end
