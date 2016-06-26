@@ -19,13 +19,25 @@ function InGame:init()
       Map = {
         X = 0,
         Y = 40,
+        W = 800,
+        H = 640,
       },
       SideBar = {
         X = 800,
         Y = 0,
+        W = 480,
+        H = 720,
       },
     },
   }
+  self.SideBarBounds = MouseInteraction(Settings.Scenes.InGame.Layout.SideBar.X,
+                                        Settings.Scenes.InGame.Layout.SideBar.Y,
+                                        Settings.Scenes.InGame.Layout.SideBar.W,
+                                        Settings.Scenes.InGame.Layout.SideBar.H)
+  self.MapBounds = MouseInteraction(Settings.Scenes.InGame.Layout.Map.X,
+                                    Settings.Scenes.InGame.Layout.Map.Y,
+                                    Settings.Scenes.InGame.Layout.Map.W,
+                                    Settings.Scenes.InGame.Layout.Map.H)
   self.Background = self:loadImage("Background")
   self.Map = nil
 end
@@ -54,9 +66,9 @@ function InGame:exit()
 end
 
 function InGame:mousePressed(x, y, button)
-  if x < Settings.Scenes.InGame.Layout.SideBar.X then
-    Log.info(tag, "Map press!")
-  else
+  if self.SideBarBounds:inBounds(x,y) then
     Log.info(tag, "Sidebar press!")
+  elseif self.MapBounds:inBounds(x,y) then
+    Log.info(tag, "Map press!")
   end
 end

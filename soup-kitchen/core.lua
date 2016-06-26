@@ -7,6 +7,8 @@ require "scenes.loading"
 require "scenes.mainmenu"
 require "scenes.ingame"
 
+require "interface.mouseinteraction"
+
 local tag = "Core"
 
 local CoreImpl = Class("Core")
