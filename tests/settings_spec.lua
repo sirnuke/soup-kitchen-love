@@ -6,10 +6,6 @@ require "tests.setup"
 describe("Settings", function()
   require "soup-kitchen.settings"
 
-  before_each(function ()
-    require "soup-kitchen.library.strict"
-  end)
-
   it("performs basic initialization", function()
     assert.is_table(Settings.Magic)
     assert.is_table(Settings.Graphics)

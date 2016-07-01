@@ -3,6 +3,9 @@
 
 Inspect = require "library.inspect"
 Class = require "library.30log"
+
+require "library.strict"
+
 Utilities = require "utilities"
 Log = require "log"
 
