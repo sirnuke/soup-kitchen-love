@@ -70,8 +70,3 @@ function Map:eachPawn(func)
     func(pawn)
   end
 end
-
-function Map:draw()
-  self:eachTile(function(tile) tile:draw() end)
-  self:eachPawn(function(pawn) pawn:draw() end)
-end
