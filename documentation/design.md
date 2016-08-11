@@ -27,6 +27,22 @@ Stores a game session.
 * Includes a Map instance.
 * Implements saving/loading.
 
+Interface
+--------
+
+### MouseInterface
+
+Wraps around tracking the mouse state for a region.
+
+* Issues mousePress, mouseHover, mouseClear, and mouseTrigger events.
+
+### MapDraw
+
+Wraps around drawing and interacting with the game map.
+
+* Does not manage the map beyond user interface actions.
+
+
 Scenes
 ------
 
@@ -72,7 +88,7 @@ Contains the physical state of the game world.
 * List of all objects.
 * List of all pawns.
 * Implements converting to/from savable string data.
-* Implements code for drawing the map.
+* Does not implement drawing.
 * Does not interact with the user interface.
 
 ### Coordinate
@@ -101,7 +117,6 @@ A single tile in the map, representing a coordinate.
 * Does not attempt to directly manipulate objects.
 * Object determines whether tile is blocked or open.
 * Does not track pawns.
-* Pass through calls for drawing objects.
 
 Pawns
 -----
@@ -114,7 +129,7 @@ Base for all pawns in the world.
 * Block other pawns.
 * Implements pathfinding.
 * Virtual functions for converting to/from string data.
-* Draws base pawn image when set in translated coordinates.
+* Tracks information necessary for drawing the pawn.
 
 Objects
 -------
@@ -130,4 +145,5 @@ Base for all logical objects in the world.
 * Determines whether and how a pawn can interact with a tile.
 * Determines image and animation used for tile.
 * Children track additional state, as necessary.
+* Tracks information necessary for drawing the object.
 
