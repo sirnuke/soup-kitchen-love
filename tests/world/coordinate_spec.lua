@@ -72,7 +72,6 @@ describe("coordinate", function()
     x, y = Settings.Map.Dimensions.Width - 2, Settings.Map.Dimensions.Height - 2
     a = Coordinate(x, y)
     b = a:duplicate()
-    assert.are_not.equal(a, b)
     assert.are.same(a, b)
     b.X, b.Y = b.X + 1, b.Y + 1
     assert.are_not.equal(a.X, b.X)

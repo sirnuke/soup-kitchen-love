@@ -28,3 +28,7 @@ end
 function Coordinate:toScreen()
   return self.X * Settings.Map.Tile.Dimensions.Width, self.Y * Settings.Map.Tile.Dimensions.Height
 end
+
+function Coordinate:__eq(coordinate)
+  return (self.X == coordinate.X and self.Y == coordinate.Y)
+end
