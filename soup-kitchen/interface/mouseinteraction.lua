@@ -11,8 +11,9 @@ function MouseInteraction:init(listener, x, y, w, h)
 end
 
 function MouseInteraction:setBounds(x, y, w, h)
-  assert(type(x) == "number", type(y) == "number", type(w) == "number", type(h) == "number",
-    "Valid arguments")
+  assert(Utilities:isInteger(x) and Utilities:isInteger(y) and Utilities:isInteger(w)
+    and Utilities:isInteger(h), "Valid arguments")
+  assert(x >= 0 and y >= 0 and w >= 1 and h >= 1, "Valid dimensions")
   self.X1 = x
   self.Y1 = y
   self.X2 = x + w

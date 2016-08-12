@@ -6,8 +6,7 @@ MapDraw = Class("MapDraw")
 local tag = "MapDraw"
 
 function MapDraw:init(map, x, y, w, h)
-  assert(Class.isInstance(map, Map), type(x) == "number", type(y) == "number",
-    type(w) == "number", type(h) == "number", "Valid Arguments")
+  assert(Class.isInstance(map, Map), "Valid class arguments")
   self.Map = map
   self.X = x
   self.Y = y
