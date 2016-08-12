@@ -50,7 +50,10 @@ function InGame:enter()
 end
 
 function InGame:update(dt)
-  self.MapDraw:update()
+  local x, y = love.mouse.getPosition()
+  self.MapDraw.Mouse:hover(x, y)
+  self.MapDraw:update(dt)
+  -- self.Map:update(dt)
 end
 
 function InGame:draw()

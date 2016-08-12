@@ -12,6 +12,8 @@ function MapDraw:init(map, x, y, w, h)
   self.X = x
   self.Y = y
   self.Mouse = MouseInteraction(self, x, y, w, h)
+  self.HoverTile = nil
+  self.SelectedTile = nil
 end
 
 function MapDraw:draw()
@@ -29,8 +31,8 @@ function MapDraw:draw()
   love.graphics.pop()
 end
 
-function MapDraw:update()
-  self.Mouse:hover(love.mouse.getPosition())
+function MapDraw:update(dt)
+  -- Visually update UI
 end
 
 function MapDraw:mousePress(x, y)
