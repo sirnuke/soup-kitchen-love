@@ -19,11 +19,32 @@ local function generate_defaults(root)
   root.Scenes = {
   }
   root.Map = {
+    Interface = {
+      Images = {
+        HoverTile = "hover-tile.png",
+        SelectedTile = "selected-tile.png",
+      },
+    },
+    Tile = {
+      Dimensions = {
+        Width = 32,
+        Height = 32,
+      },
+    },
+    Dimensions = {
+      Width = 25,
+      Height = 20,
+    },
   }
 end
 
 function SettingsImpl:init()
+  Log.info(tag, "Generating settings...")
   generate_defaults(self)
+end
+
+function SettingsImpl:dump()
+  Log.info(tag, "%s", Inspect(self))
 end
 
 Settings = SettingsImpl()

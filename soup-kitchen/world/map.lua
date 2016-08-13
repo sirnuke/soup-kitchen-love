@@ -9,18 +9,6 @@ require "world.tile"
 Map = Class("Map")
 
 function Map:init()
-  Settings.Map = {
-    Tile = {
-      Dimensions = {
-        Width = 32,
-        Height = 32,
-      },
-    },
-    Dimensions = {
-      Width = 25,
-      Height = 20,
-    },
-  }
 
   self.Data = {}
   for y = 1, Settings.Map.Dimensions.Height do
