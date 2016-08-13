@@ -24,32 +24,39 @@ function MapDraw:draw()
   self.Map:eachTile(function(tile) tile:draw() end)
   self.Map:eachPawn(function(pawn) pawn:draw() end)
   -- Draw UI
-  
 
   -- Revert screen coordinates
   love.graphics.pop()
 end
 
 function MapDraw:update(dt)
-  -- Visually update UI
+  -- Tick UI
 end
 
 function MapDraw:mousePress(x, y)
-  Log.info(tag, "Initial click on map @ (%i,%i)", x, y)
-  -- set object to clicked, if interactable
+  local coordinate = Coordinate.FromPosition(x, y)
+  self.SelectedTile = coordinate
 end
 
 function MapDraw:mouseHover(x, y)
-  -- if clicked and doesn't match, set to pure hover
+  local coordinate = Coordinate.FromPosition(x, y)
+  self.HoverTile = coordinate
+  if self.SelectedTile ~= nil and self.HoverTile ~= self.SelectedTile then
+    self.SelectedTile = nil
+  end
 end
 
 function MapDraw:mouseClear()
-  -- Update UI state to nada, clear clicked
+  self.HoverTile = nil
+  self.SelectedTile = nil
 end
 
 function MapDraw:mouseTrigger(x, y)
-  Log.info(tag, "Clicked inside map @ (%i,%i)", x, y)
-  -- if matches initial click, trigger
-  -- else set to hover at (x, y)
+  local coordinate = Coordinate.FromPosition(x, y)
+  if coordinate == self.SelectedTile then
+    Log.info(tag, "Trigger %s", coordinate)
+  else
+    Log.info(tag, "Ignoring trigger")
+  end
 end
 
