@@ -17,6 +17,35 @@ local function generate_defaults(root)
     Clear = { 255, 255, 255, 0 },
   }
   root.Scenes = {
+    InGame = {
+      Images = {
+        Background = "background.png"
+      },
+      Layout = {
+        Map = {
+          X = 0,
+          Y = 40,
+          W = 800,
+          H = 640,
+        },
+        SideBar = {
+          X = 800,
+          Y = 0,
+          W = 480,
+          H = 720,
+        },
+      },
+    },
+    Loading = {
+      Images = {
+        Background = "background.png"
+      },
+    },
+    MainMenu = {
+      Images = {
+        Background = "background.png"
+      },
+    },
   }
   root.Map = {
     Interface = {
@@ -43,7 +72,6 @@ local function generate_defaults(root)
 end
 
 function SettingsImpl:init()
-  Log.info(tag, "Generating settings...")
   generate_defaults(self)
 end
 

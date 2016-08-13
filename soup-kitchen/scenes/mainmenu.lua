@@ -9,11 +9,6 @@ MainMenu = Scene:extend("MainMenu")
 
 function MainMenu:init()
   MainMenu.super:init()
-  Settings.Scenes.MainMenu = {
-    Images = {
-      Background = "background.png"
-    },
-  }
   self.Background = self:loadImage("Background")
 end
 

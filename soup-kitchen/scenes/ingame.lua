@@ -13,25 +13,6 @@ InGame = Scene:extend("InGame")
 
 function InGame:init()
   InGame.super:init()
-  Settings.Scenes.InGame = {
-    Images = {
-      Background = "background.png"
-    },
-    Layout = {
-      Map = {
-        X = 0,
-        Y = 40,
-        W = 800,
-        H = 640,
-      },
-      SideBar = {
-        X = 800,
-        Y = 0,
-        W = 480,
-        H = 720,
-      },
-    },
-  }
   -- self.SideBarBounds = MouseInteraction(Settings.Scenes.InGame.Layout.SideBar.X,
                                         -- Settings.Scenes.InGame.Layout.SideBar.Y,
                                         -- Settings.Scenes.InGame.Layout.SideBar.W,

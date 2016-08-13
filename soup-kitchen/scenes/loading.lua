@@ -9,11 +9,6 @@ Loading = Scene:extend("Loading")
 
 function Loading:init()
   Loading.super:init()
-  Settings.Scenes.Loading = {
-    Images = {
-      Background = "background.png"
-    },
-  }
   self.Background = self:loadImage("Background")
 end
 
