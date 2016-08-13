@@ -5,10 +5,10 @@ MouseInteraction = Class("MouseInteraction")
 
 function MouseInteraction:init(callback, x, y, w, h)
   assert(type(callback) == "table", "Basic validity of arguments")
-  assert(type(callback.mousePress) == "function", "callback contains mousePress")
-  assert(type(callback.mouseHover) == "function", "callback contains mouseHover")
-  assert(type(callback.mouseClear) == "function", "callback contains mouseClear")
-  assert(type(callback.mouseTrigger) == "function", "callback contains mouseTrigger")
+  assert(callback.mousePress ~= nil, "callback contains mousePress")
+  assert(callback.mouseHover ~= nil, "callback contains mouseHover")
+  assert(callback.mouseClear ~= nil, "callback contains mouseClear")
+  assert(callback.mouseTrigger ~= nil, "callback contains mouseTrigger")
   self.callback = callback
   self.clicked = false
   self:setBounds(x, y, w, h)
