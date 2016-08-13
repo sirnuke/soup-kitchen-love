@@ -60,6 +60,7 @@ local function generate_defaults(root)
         Width = 32,
         Height = 32,
       },
+      Default = "Floor",
     },
     Tiles = {
       Blocked = {

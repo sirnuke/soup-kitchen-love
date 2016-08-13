@@ -14,7 +14,7 @@ function Map:init()
   for y = 1, Settings.Map.Dimensions.Height do
     self.Data[y] = {}
     for x = 1, Settings.Map.Dimensions.Width do
-      self.Data[y][x] = Tile("Floor", Coordinate(x - 1, y - 1))
+      self.Data[y][x] = Tile(Settings.Map.Tile.Default, Coordinate(x - 1, y - 1))
     end
   end
 
