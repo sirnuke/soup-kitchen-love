@@ -8,9 +8,6 @@ local images = nil
 local function loadStaticData()
   if images ~= nil then return end
   images = {}
-  Settings.Map.Tile.Blocked = {
-    "Blocked",
-  }
   for key,value in ipairs(Settings.Map.Tile.Blocked) do
     images[value] = Core:loadImage("Tiles", value..".png")
   end

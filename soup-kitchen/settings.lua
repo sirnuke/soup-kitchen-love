@@ -31,6 +31,9 @@ local function generate_defaults(root)
         Width = 32,
         Height = 32,
       },
+      Blocked = {
+        "Blocked",
+      },
     },
     Dimensions = {
       Width = 25,
