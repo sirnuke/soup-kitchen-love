@@ -3,7 +3,7 @@
 
 require "scenes.scene"
 
-require "interface.mapdraw"
+require "interface.mapview"
 
 require "world.map"
 
@@ -19,40 +19,40 @@ function InGame:init()
                                         -- Settings.Scenes.InGame.Layout.SideBar.H)
   self.Background = self:loadImage("Background")
   self.Map = nil
-  self.MapDraw = nil
+  self.MapView = nil
 end
 
 function InGame:enter()
   self.Map = Map()
   self.Map:generateDebugMap()
-  self.MapDraw = MapDraw(self.Map,
+  self.MapView = MapView(self.Map,
                          Settings.Scenes.InGame.Layout.Map.X, Settings.Scenes.InGame.Layout.Map.Y,
                          Settings.Scenes.InGame.Layout.Map.W, Settings.Scenes.InGame.Layout.Map.H)
 end
 
 function InGame:update(dt)
   local x, y = love.mouse.getPosition()
-  self.MapDraw.Mouse:hover(x, y)
-  self.MapDraw:update(dt)
+  self.MapView.Mouse:hover(x, y)
+  self.MapView:update(dt)
   -- self.Map:update(dt)
 end
 
 function InGame:draw()
   love.graphics.draw(self.Background)
   -- Draw Map
-  self.MapDraw:draw()
+  self.MapView:draw()
   -- Draw sidebar
 end
 
 function InGame:exit()
   self.Map = nil
-  self.MapDraw = nil
+  self.MapView = nil
 end
 
 function InGame:mousePressed(x, y, button)
-  self.MapDraw.Mouse:press(x, y)
+  self.MapView.Mouse:press(x, y)
 end
 
 function InGame:mouseReleased(x, y, button)
-  self.MapDraw.Mouse:release(x, y)
+  self.MapView.Mouse:release(x, y)
 end

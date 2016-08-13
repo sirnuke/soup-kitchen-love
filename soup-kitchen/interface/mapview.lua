@@ -1,11 +1,11 @@
 -- Soup Kitchen
 -- Bryan DeGrendel (c) 2016
 
-MapDraw = Class("MapDraw")
+MapView = Class("MapView")
 
-local tag = "MapDraw"
+local tag = "MapView"
 
-function MapDraw:init(map, x, y, w, h)
+function MapView:init(map, x, y, w, h)
   assert(Class.isInstance(map, Map), "Valid class arguments")
   self.Map = map
   self.X = x
@@ -24,7 +24,7 @@ function MapDraw:init(map, x, y, w, h)
   end
 end
 
-function MapDraw:draw()
+function MapView:draw()
   -- Setup screen coordinates
   love.graphics.push()
   love.graphics.translate(self.X, self.Y)
@@ -50,15 +50,15 @@ function MapDraw:draw()
   love.graphics.pop()
 end
 
-function MapDraw:drawTile(tile)
+function MapView:drawTile(tile)
   love.graphics.draw(self.TileImages[tile.Id], tile.Coordinate:toScreen())
 end
 
-function MapDraw:update(dt)
+function MapView:update(dt)
   -- Tick UI
 end
 
-function MapDraw:mousePress(x, y)
+function MapView:mousePress(x, y)
   local coordinate = Coordinate.FromPosition(x, y)
   if self.Map:getTile(coordinate).Interactable then
     self.PressedTile = coordinate
@@ -68,7 +68,7 @@ function MapDraw:mousePress(x, y)
   self.SelectedTile = nil
 end
 
-function MapDraw:mouseHover(x, y)
+function MapView:mouseHover(x, y)
   local coordinate = Coordinate.FromPosition(x, y)
   if self.PressedTile ~= coordinate then self.PressedTile = nil end
   if self.Map:getTile(coordinate).Interactable then
@@ -78,12 +78,12 @@ function MapDraw:mouseHover(x, y)
   end
 end
 
-function MapDraw:mouseClear()
+function MapView:mouseClear()
   self.HoverTile = nil
   self.PressedTile = nil
 end
 
-function MapDraw:mouseTrigger(x, y)
+function MapView:mouseTrigger(x, y)
   local coordinate = Coordinate.FromPosition(x, y)
   if coordinate == self.PressedTile then
     Log.info(tag, "Trigger %s", coordinate)
