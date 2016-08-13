@@ -19,8 +19,7 @@ function Position:duplicate()
 end
 
 function Position:toCoordinate()
-  return Coordinate(math.floor(self.X / Settings.Map.Tile.Dimensions.Width),
-                    math.floor(self.Y / Settings.Map.Tile.Dimensions.Height))
+  return Coordinate.FromPosition(self.X, self.Y)
 end
 
 function Position:toScreen()
