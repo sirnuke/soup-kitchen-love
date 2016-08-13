@@ -18,6 +18,10 @@ function MapDraw:init(map, x, y, w, h)
   self.HoverImage = Core:loadImage("Interface", Settings.Map.Interface.Images.HoverTile)
   self.PressedImage = Core:loadImage("Interface", Settings.Map.Interface.Images.PressedTile)
   self.SelectedImage = Core:loadImage("Interface", Settings.Map.Interface.Images.SelectedTile)
+  self.TileImages = {}
+  for key,value in pairs(Settings.Map.Tiles) do
+    self.TileImages[key] = Core:loadImage("Tiles", key..".png")
+  end
 end
 
 function MapDraw:draw()
@@ -26,7 +30,7 @@ function MapDraw:draw()
   love.graphics.translate(self.X, self.Y)
 
   -- Draw map
-  self.Map:eachTile(function(tile) tile:draw() end)
+  self.Map:eachTile(function(tile) self:drawTile(tile) end)
   self.Map:eachPawn(function(pawn) pawn:draw() end)
   -- Draw UI
 
@@ -44,6 +48,10 @@ function MapDraw:draw()
 
   -- Revert screen coordinates
   love.graphics.pop()
+end
+
+function MapDraw:drawTile(tile)
+  love.graphics.draw(self.TileImages[tile.Id], tile.Coordinate:toScreen())
 end
 
 function MapDraw:update(dt)

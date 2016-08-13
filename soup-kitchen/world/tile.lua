@@ -5,35 +5,16 @@ Tile = Class("Tile")
 
 local images = nil
 
-local function loadStaticData()
-  if images ~= nil then return end
-  images = {}
-  for key,value in ipairs(Settings.Map.Tile.Blocked) do
-    images[value] = Core:loadImage("Tiles", value..".png")
-  end
-end
 
-
-function Tile:init(coordinate)
+function Tile:init(id, coordinate)
   assert(Class.isInstance(coordinate, Coordinate))
-
-  loadStaticData()
-
   self.Coordinate = coordinate:duplicate()
-  self.X, self.Y = coordinate:toScreen()
-  self.Image = nil
-  self.Blocked = false
+  self:update(id)
 end
 
-function Tile:update(blocked, type)
-  self.Blocked = blocked
-  self.Image = images[type]
+function Tile:update(id)
+  assert(Settings.Map.Tiles[id] ~= nil, "Must have valid tile id")
+  self.Blocked = Settings.Map.Tiles[id].Blocked
+  self.Id = id
 end
 
-function Tile:isBlocked()
-  return self.Blocked
-end
-
-function Tile:draw()
-  if self.Image ~= nil then love.graphics.draw(self.Image, self.X, self.Y) end
-end
