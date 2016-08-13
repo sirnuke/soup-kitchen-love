@@ -12,9 +12,11 @@ function MapDraw:init(map, x, y, w, h)
   self.Y = y
   self.Mouse = MouseInteraction(self, x, y, w, h)
   self.HoverTile = nil
+  self.PressedTile = nil
   self.SelectedTile = nil
 
   self.HoverImage = Core:loadImage("Interface", Settings.Map.Interface.Images.HoverTile)
+  self.PressedImage = Core:loadImage("Interface", Settings.Map.Interface.Images.PressedTile)
   self.SelectedImage = Core:loadImage("Interface", Settings.Map.Interface.Images.SelectedTile)
 end
 
@@ -28,8 +30,12 @@ function MapDraw:draw()
   self.Map:eachPawn(function(pawn) pawn:draw() end)
   -- Draw UI
 
-  if self.HoverTile ~= nil and self.HoverTile ~= self.SelectedTile then
+  if self.HoverTile ~= nil then
     love.graphics.draw(self.HoverImage, self.HoverTile:toScreen())
+  end
+
+  if self.PressedTile ~= nil then
+    love.graphics.draw(self.PressedImage, self.PressedTile:toScreen())
   end
 
   if self.SelectedTile ~= nil then
@@ -46,28 +52,30 @@ end
 
 function MapDraw:mousePress(x, y)
   local coordinate = Coordinate.FromPosition(x, y)
-  self.SelectedTile = coordinate
+  self.PressedTile = coordinate
 end
 
 function MapDraw:mouseHover(x, y)
   local coordinate = Coordinate.FromPosition(x, y)
   self.HoverTile = coordinate
-  if self.SelectedTile ~= nil and self.HoverTile ~= self.SelectedTile then
-    self.SelectedTile = nil
+  if self.PressedTile ~= nil and self.HoverTile ~= self.PressedTile then
+    self.PressedTile = nil
   end
 end
 
 function MapDraw:mouseClear()
   self.HoverTile = nil
-  self.SelectedTile = nil
+  self.PressedTile = nil
 end
 
 function MapDraw:mouseTrigger(x, y)
   local coordinate = Coordinate.FromPosition(x, y)
-  if coordinate == self.SelectedTile then
+  if coordinate == self.PressedTile then
     Log.info(tag, "Trigger %s", coordinate)
+    self.SelectedTile = self.PressedTile
   else
     Log.info(tag, "Ignoring trigger")
   end
+  self.PressedTile = nil
 end
 

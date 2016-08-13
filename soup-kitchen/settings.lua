@@ -22,6 +22,7 @@ local function generate_defaults(root)
     Interface = {
       Images = {
         HoverTile = "hover-tile.png",
+        PressedTile = "pressed-tile.png",
         SelectedTile = "selected-tile.png",
       },
     },
