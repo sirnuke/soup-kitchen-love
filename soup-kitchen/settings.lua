@@ -65,9 +65,11 @@ local function generate_defaults(root)
     Tiles = {
       Blocked = {
         Blocked = true,
+        Interactable = false,
       },
       Floor = {
         Blocked = false,
+        Interactable = true,
       },
     },
     Dimensions = {

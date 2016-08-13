@@ -60,14 +60,21 @@ end
 
 function MapDraw:mousePress(x, y)
   local coordinate = Coordinate.FromPosition(x, y)
-  self.PressedTile = coordinate
+  if self.Map:getTile(coordinate).Interactable then
+    self.PressedTile = coordinate
+  else
+    self.PressedTile = nil
+  end
+  self.SelectedTile = nil
 end
 
 function MapDraw:mouseHover(x, y)
   local coordinate = Coordinate.FromPosition(x, y)
-  self.HoverTile = coordinate
-  if self.PressedTile ~= nil and self.HoverTile ~= self.PressedTile then
-    self.PressedTile = nil
+  if self.PressedTile ~= coordinate then self.PressedTile = nil end
+  if self.Map:getTile(coordinate).Interactable then
+    self.HoverTile = coordinate
+  else
+    self.HoverTile = nil
   end
 end
 
