@@ -3,9 +3,13 @@
 
 MouseInteraction = Class("MouseInteraction")
 
-function MouseInteraction:init(listener, x, y, w, h)
-  assert(type(listener) ~= "nil", "Valid arguments")
-  self.listener = listener
+function MouseInteraction:init(callback, x, y, w, h)
+  assert(type(callback) == "table", "Basic validity of arguments")
+  assert(type(callback.mousePress) == "function", "callback contains mousePress")
+  assert(type(callback.mouseHover) == "function", "callback contains mouseHover")
+  assert(type(callback.mouseClear) == "function", "callback contains mouseClear")
+  assert(type(callback.mouseTrigger) == "function", "callback contains mouseTrigger")
+  self.callback = callback
   self.clicked = false
   self:setBounds(x, y, w, h)
 end
@@ -35,22 +39,22 @@ end
 function MouseInteraction:press(x, y)
   if self:inBounds(x, y) then
     self.clicked = true
-    self.listener:mousePress(self:translate(x, y))
+    self.callback:mousePress(self:translate(x, y))
   end
 end
 
 function MouseInteraction:hover(x, y)
   if self:inBounds(x, y) then
-    self.listener:mouseHover(self:translate(x, y))
+    self.callback:mouseHover(self:translate(x, y))
   else
     self.clicked = false
-    self.listener:mouseClear()
+    self.callback:mouseClear()
   end
 end
 
 function MouseInteraction:release(x, y)
   if self:inBounds(x, y) and self.clicked then
-    self.listener:mouseTrigger(self:translate(x, y))
+    self.callback:mouseTrigger(self:translate(x, y))
   end
   self.clicked = false
 end
