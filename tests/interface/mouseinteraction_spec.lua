@@ -12,11 +12,12 @@ describe("mouse-interaction", function()
   local x, y
 
   before_each(function()
-    callback = {}
-    callback.mousePress = function(x, y) end
-    callback.mouseHover = function(x, y) end
-    callback.mouseClear = function() end
-    callback.mouseTrigger = function(x, y) end
+    callback = {
+      mousePress = spy.new(function(self, x, y) end),
+      mouseHover = spy.new(function(self, x, y) end),
+      mouseClear = spy.new(function(self) end),
+      mouseTrigger = spy.new(function(self, x, y) end),
+    }
     mouseinteraction = MouseInteraction(callback, 1, 10, 9, 90)
   end)
 
@@ -27,10 +28,14 @@ describe("mouse-interaction", function()
   it("checks for a valid callback object", function()
     assert.has_error(function() MouseInteraction(nil, 0, 0, 1, 1) end)
     assert.has_error(function() MouseInteraction({}, 0, 0, 1, 1) end)
-    assert.has_error(function() MouseInteraction({mouseHover = function() end, mouseClear = function() end, mouseTrigger = function() end}, 0, 0, 1, 1) end)
-    assert.has_error(function() MouseInteraction({mousePress = function() end, mouseClear = function() end, mouseTrigger = function() end}, 0, 0, 1, 1) end)
-    assert.has_error(function() MouseInteraction({mousePress = function() end, mouseHover = function() end, mouseTrigger = function() end}, 0, 0, 1, 1) end)
-    assert.has_error(function() MouseInteraction({mousePress = function() end, mouseHover = function() end, mouseClear = function() end}, 0, 0, 1, 1) end)
+    assert.has_error(function() MouseInteraction({mouseHover = function() end,
+        mouseClear = function() end, mouseTrigger = function() end}, 0, 0, 1, 1) end)
+    assert.has_error(function() MouseInteraction({mousePress = function() end,
+        mouseClear = function() end, mouseTrigger = function() end}, 0, 0, 1, 1) end)
+    assert.has_error(function() MouseInteraction({mousePress = function() end,
+        mouseHover = function() end, mouseTrigger = function() end}, 0, 0, 1, 1) end)
+    assert.has_error(function() MouseInteraction({mousePress = function() end,
+        mouseHover = function() end, mouseClear = function() end}, 0, 0, 1, 1) end)
   end)
 
   it("rejects invalid dimensions", function()
@@ -84,5 +89,39 @@ describe("mouse-interaction", function()
     assert.is_false(mouseinteraction:inBounds(1, 1))
   end)
 
-  -- TODO: Callback spying
+  it("generates mousePress events", function()
+    mouseinteraction:press(0, 0)
+    assert.spy(callback.mousePress).was_not_called()
+    mouseinteraction:press(1, 10)
+    assert.spy(callback.mousePress).was_called_with(callback, 0, 0)
+  end)
+
+  it("generates mouseHover events", function()
+    mouseinteraction:hover(0, 0)
+    assert.spy(callback.mouseHover).was_not_called()
+    mouseinteraction:hover(1, 10)
+    assert.spy(callback.mouseHover).was_called_with(callback, 0, 0)
+  end)
+
+  it("generates mouseClear events", function()
+    mouseinteraction:hover(1, 10)
+    mouseinteraction:hover(0, 0)
+    assert.spy(callback.mouseClear).was_called_with(callback)
+  end)
+
+  it("generates mouseTrigger events", function()
+    mouseinteraction:hover(1, 10)
+    mouseinteraction:press(1, 10)
+    mouseinteraction:release(1, 10)
+    assert.spy(callback.mouseTrigger).was_called_with(callback, 0, 0)
+  end)
+
+  it("clears presses that leave the bounds", function()
+    mouseinteraction:hover(1, 10)
+    mouseinteraction:press(1, 10)
+    mouseinteraction:hover(0, 10)
+    mouseinteraction:hover(1, 10)
+    mouseinteraction:release(1, 10)
+    assert.spy(callback.mouseTrigger).was_not_called()
+  end)
 end)
