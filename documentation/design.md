@@ -34,13 +34,14 @@ Interface
 
 Wraps around tracking the mouse state for a region.
 
-* Issues mousePress, mouseHover, mouseClear, and mouseTrigger events.
+* Issues mousePress, mouseHover, mouseClear, and mouseTrigger callback events.
 
 ### MapDraw
 
 Wraps around drawing and interacting with the game map.
 
-* Does not manage the map beyond user interface actions.
+* Does not manage the map beyond basic user interface steps.
+* Handles all map drawing.
 
 
 Scenes
