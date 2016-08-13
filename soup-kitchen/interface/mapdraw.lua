@@ -13,6 +13,9 @@ function MapDraw:init(map, x, y, w, h)
   self.Mouse = MouseInteraction(self, x, y, w, h)
   self.HoverTile = nil
   self.SelectedTile = nil
+
+  self.HoverImage = Core:loadImage("Interface", Settings.Map.Interface.Images.HoverTile)
+  self.SelectedImage = Core:loadImage("Interface", Settings.Map.Interface.Images.SelectedTile)
 end
 
 function MapDraw:draw()
@@ -24,6 +27,14 @@ function MapDraw:draw()
   self.Map:eachTile(function(tile) tile:draw() end)
   self.Map:eachPawn(function(pawn) pawn:draw() end)
   -- Draw UI
+
+  if self.HoverTile ~= nil and self.HoverTile ~= self.SelectedTile then
+    love.graphics.draw(self.HoverImage, self.HoverTile:toScreen())
+  end
+
+  if self.SelectedTile ~= nil then
+    love.graphics.draw(self.SelectedImage, self.SelectedTile:toScreen())
+  end
 
   -- Revert screen coordinates
   love.graphics.pop()
