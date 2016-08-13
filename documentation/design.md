@@ -36,12 +36,14 @@ Wraps around tracking the mouse state for a region.
 
 * Issues mousePress, mouseHover, mouseClear, and mouseTrigger callback events.
 
-### MapDraw
+### MapView
 
 Wraps around drawing and interacting with the game map.
 
 * Does not manage the map beyond basic user interface steps.
 * Handles all map drawing.
+* One pawn can be selected at a time.
+* Orders are sent to the Map object.
 
 
 Scenes
