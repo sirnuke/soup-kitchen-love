@@ -3,6 +3,8 @@
 
 local tag = "Map"
 
+require "pawns.pawn"
+
 require "world.coordinate"
 require "world.tile"
 
@@ -31,6 +33,10 @@ function Map:generateDebugMap()
   self:insertDebugBlocked(Coordinate(0, Settings.Map.Dimensions.Height - 1))
   self:insertDebugBlocked(Coordinate(Settings.Map.Dimensions.Width - 1, Settings.Map.Dimensions.Height - 1))
   self:insertDebugBlocked(Coordinate(Settings.Map.Dimensions.Width - 1, 0))
+
+  local pawn = Settings.Map.Pawns[Settings.Map.Pawn.Default]
+  local you = Pawn(Settings.Map.Pawn.Default, Coordinate(pawn.Spawn.X, pawn.Spawn.Y):toPosition())
+  table.insert(self.Pawns, you)
 end
 
 function Map:insertDebugBlocked(coord)

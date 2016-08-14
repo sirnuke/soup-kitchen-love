@@ -22,6 +22,10 @@ function MapView:init(map, x, y, w, h)
   for key,value in pairs(Settings.Map.Tiles) do
     self.TileImages[key] = Core:loadImage("Tiles", key..".png")
   end
+  self.PawnImages = {}
+  for key,value in pairs(Settings.Map.Pawns) do
+    self.PawnImages[key] = Core:loadImage("Pawns", key..".png")
+  end
 end
 
 function MapView:draw()
@@ -31,7 +35,7 @@ function MapView:draw()
 
   -- Draw map
   self.Map:eachTile(function(tile) self:drawTile(tile) end)
-  self.Map:eachPawn(function(pawn) pawn:draw() end)
+  self.Map:eachPawn(function(pawn) self:drawPawn(pawn) end)
   -- Draw UI
 
   if self.HoverTile ~= nil then
@@ -52,6 +56,13 @@ end
 
 function MapView:drawTile(tile)
   love.graphics.draw(self.TileImages[tile.Id], tile.Coordinate:toScreen())
+end
+
+function MapView:drawPawn(pawn)
+  local x, y = pawn.Position:toScreen()
+  x = x - Settings.Map.Pawn.Dimensions.Width / 2
+  y = y - Settings.Map.Pawn.Dimensions.Height / 2
+  love.graphics.draw(self.PawnImages[pawn.Id], x, y)
 end
 
 function MapView:update(dt)

@@ -55,6 +55,22 @@ local function generate_defaults(root)
         SelectedTile = "selected-tile.png",
       },
     },
+    Pawn = {
+      Dimensions = {
+        Width = 16,
+        Height = 16,
+      },
+      Default = "Default",
+    },
+    Pawns = {
+      Default = {
+        Controllable = true,
+        Spawn = {
+          X = 2,
+          Y = 2,
+        },
+      }
+    },
     Tile = {
       Dimensions = {
         Width = 32,
