@@ -41,3 +41,4 @@ end
 function Coordinate:__tostring()
   return string.format("C(%i,%i)", self.X, self.Y)
 end
+
