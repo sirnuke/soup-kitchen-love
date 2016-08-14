@@ -13,7 +13,10 @@ function MapView:init(map, x, y, w, h)
   self.Mouse = MouseInteraction(self, x, y, w, h)
   self.HoverTile = nil
   self.PressedTile = nil
-  self.SelectedTile = nil
+
+  self.HoverPawn = nil
+  self.PressedPawn = nil
+  self.SelectedPawn = nil
 
   self.HoverImage = Core:loadImage("Interface", Settings.Map.Interface.Images.HoverTile)
   self.PressedImage = Core:loadImage("Interface", Settings.Map.Interface.Images.PressedTile)
@@ -22,6 +25,9 @@ function MapView:init(map, x, y, w, h)
   for key,value in pairs(Settings.Map.Tiles) do
     self.TileImages[key] = Core:loadImage("Tiles", key..".png")
   end
+  self.HoverPawn = Core:loadImage("Interface", Settings.Map.Interface.Images.HoverPawn)
+  self.PressedPawn = Core:loadImage("Interface", Settings.Map.Interface.Images.PressedPawn)
+  self.SelectedPawn = Core:loadImage("Interface", Settings.Map.Interface.Images.SelectedPawn)
   self.PawnImages = {}
   for key,value in pairs(Settings.Map.Pawns) do
     self.PawnImages[key] = Core:loadImage("Pawns", key..".png")
