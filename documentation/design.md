@@ -44,6 +44,10 @@ Wraps around drawing and interacting with the game map.
 * Handles all map drawing.
 * One pawn can be selected at a time.
 * Orders are sent to the Map object.
+* Clicks off MapView are ignored
+* Clicks on a controllable pawn select that pawn.
+* While selecting a pawn, clicks on an interactable, unoccupied tile generate a move order.
+* Clicking on an uninteractable tile deselects the pawn.
 
 
 Scenes
