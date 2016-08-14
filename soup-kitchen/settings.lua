@@ -53,6 +53,9 @@ local function generate_defaults(root)
         HoverTile = "hover-tile.png",
         PressedTile = "pressed-tile.png",
         SelectedTile = "selected-tile.png",
+        HoverPawn = "hover-pawn.png",
+        PressedPawn = "pressed-pawn.png",
+        SelectedPawn = "selected-pawn.png",
       },
     },
     Pawn = {
