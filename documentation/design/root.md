@@ -2,7 +2,8 @@
 
 ## Main
 
-Loads library classes, wraps core Love functions to corresponding Core functions.
+Loads library classes, wraps core Love functions to corresponding Core
+functions.
 
 ## Core
 
