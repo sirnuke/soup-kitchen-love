@@ -1,31 +1,39 @@
 Design
 ======
 
-Root
-----
+Open with first level heading labeling the scope.  Followed by a paragraph describing the scope in human terms.
 
-### Core
+Followed by a list of bullet points describing what sort of classes fit into the scope.
 
-Singleton representing the heart of the game.
+A second level heading of the class name.  Generally should match the file name.  Doesn't necessary have to be a class.  Paragraph afterward should describe it in human terms.
 
-### Settings
+Followed by a list of bullet points describing behavior and constraints.
 
-Singleton storing constants used throughout the code.
+A third level heading called *User Interface*.  Followed by a series of bullet points describing how the class interacts with users.
 
-* Constants should be set in the class where they are most relevant.
-* Constants should not change during execution.
+A third level heading called *Drawing*.  Followed by a series of bullet points describing how it draws to the screen.
 
-### Animation
+# Scope
 
-Class wrapping around a series of images.
+Human readable scope description.
 
-### Session
+## Class
 
-Stores a game session.
+Human readable class description.
 
-* Includes game session metadata.
-* Includes a Map instance.
-* Implements saving/loading.
+* Constraints
+* Behavior
+
+### User Interface
+
+* User interface behaviors
+
+### Drawing
+
+* Drawing procedures
+
+
+**Old to be organized documentation**
 
 Interface
 --------
